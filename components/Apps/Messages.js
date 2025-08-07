@@ -34,12 +34,12 @@ export default function Messages({ goBack }) {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="p-4 border-b flex items-center">
-        <button onClick={goBack} className="mr-2">
-          <ArrowLeft className="w-6 h-6 text-gray-900" />
+    <div className="flex flex-col h-full bg-black/50 backdrop-blur-sm">
+      <div className="p-4 border-b border-cyan-500/30 flex items-center">
+        <button onClick={goBack} className="mr-2 text-cyan-300">
+          <ArrowLeft className="w-6 h-6" />
         </button>
-        <h2 className="text-lg font-bold text-gray-900">Messages</h2>
+        <h2 className="text-lg font-bold text-cyan-300">Messages</h2>
       </div>
       
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -48,30 +48,30 @@ export default function Messages({ goBack }) {
             key={msg.id} 
             className={`max-w-xs p-3 rounded-xl ${
               msg.sender === 'me' 
-                ? 'bg-blue-500 text-white ml-auto' 
-                : 'bg-gray-200 mr-auto'
+                ? 'bg-cyan-500/20 border border-cyan-500/50 ml-auto' 
+                : 'bg-gray-800/50 border border-cyan-500/30 mr-auto'
             }`}
           >
-            <p>{msg.text}</p>
-            <p className={`text-xs mt-1 ${msg.sender === 'me' ? 'text-blue-100' : 'text-gray-500'}`}>
+            <p className={msg.sender === 'me' ? 'text-cyan-200' : 'text-gray-200'}>{msg.text}</p>
+            <p className={`text-xs mt-1 ${msg.sender === 'me' ? 'text-cyan-300' : 'text-gray-400'}`}>
               {msg.time}
             </p>
           </div>
         ))}
       </div>
       
-      <div className="p-4 border-t flex items-center">
+      <div className="p-4 border-t border-cyan-500/30 flex items-center">
         <input
           type="text"
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
           placeholder="Type a message..."
-          className="flex-1 p-2 border rounded-full px-4"
+          className="flex-1 p-2 bg-black/30 border border-cyan-500/30 rounded-full px-4 text-cyan-200 placeholder-cyan-500 focus:outline-none focus:border-cyan-400"
         />
         <button 
           onClick={sendMessage}
-          className="ml-2 bg-blue-500 text-white p-2 rounded-full"
+          className="ml-2 bg-cyan-500 text-white p-2 rounded-full hover:bg-cyan-400 transition-colors"
         >
           <Send className="w-5 h-5" />
         </button>

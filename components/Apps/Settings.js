@@ -12,26 +12,26 @@ function Settings({ goBack }) {
   ];
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="p-4 border-b flex items-center">
-        <button onClick={goBack} className="mr-2">
-          <ArrowLeft className="w-6 h-6 text-gray-900" />
+    <div className="flex flex-col h-full bg-black/50 backdrop-blur-sm">
+      <div className="p-4 border-b border-cyan-500/30 flex items-center">
+        <button onClick={goBack} className="mr-2 text-cyan-300">
+          <ArrowLeft className="w-6 h-6" />
         </button>
-        <h2 className="text-lg font-bold text-gray-900">Settings</h2>
+        <h2 className="text-lg font-bold text-cyan-300">Settings</h2>
       </div>
       
       <div className="flex-1 overflow-y-auto">
         <div className="p-4">
-          <h3 className="text-lg font-bold mb-4 text-gray-900">General</h3>
+          <h3 className="text-lg font-bold mb-4 text-cyan-300">General</h3>
           <div className="space-y-2">
             {settings.map((setting) => (
               <div 
                 key={setting.id} 
-                className="p-3 bg-white rounded-lg flex justify-between items-center"
+                className="p-3 bg-black/30 rounded-lg flex justify-between items-center border border-cyan-500/30"
               >
-                <span>{setting.name}</span>
+                <span className="text-cyan-200">{setting.name}</span>
                 {setting.value && (
-                  <span className="text-gray-500 text-sm">{setting.value}</span>
+                  <span className="text-cyan-400 text-sm">{setting.value}</span>
                 )}
               </div>
             ))}

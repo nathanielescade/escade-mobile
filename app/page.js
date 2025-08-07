@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 import PhoneFrame from '../components/PhoneFrame';
 import HomeScreen from '../components/HomeScreen';
@@ -49,7 +47,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-900 via-purple-900 to-black flex items-center justify-center p-4">
       <div className="w-full max-w-md mx-auto">
         <PhoneFrame>
           {renderCurrentApp()}

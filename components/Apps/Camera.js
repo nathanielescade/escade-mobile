@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { ArrowLeft, Camera as CameraIcon, RotateCcw } from 'lucide-react';
 
-export default function CameraApp({ goBack }) {
+function CameraApp({ goBack }) {
   const [photos, setPhotos] = useState([]);
   const [isFrontCamera, setIsFrontCamera] = useState(false);
   const videoRef = useRef(null);
@@ -21,23 +21,23 @@ export default function CameraApp({ goBack }) {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="p-4 border-b flex items-center justify-between">
-        <button onClick={goBack}>
-          <ArrowLeft className="w-6 h-6 text-gray-900" />
+    <div className="flex flex-col h-full bg-black/50 backdrop-blur-sm">
+      <div className="p-4 border-b border-cyan-500/30 flex items-center justify-between">
+        <button onClick={goBack} className="text-cyan-300">
+          <ArrowLeft className="w-6 h-6" />
         </button>
-        <h2 className="text-lg font-bold text-gray-900">Camera</h2>
-        <button onClick={toggleCamera}>
+        <h2 className="text-lg font-bold text-cyan-300">Camera</h2>
+        <button onClick={toggleCamera} className="text-cyan-300">
           <RotateCcw className="w-6 h-6" />
         </button>
       </div>
       
       <div className="flex-1 flex flex-col items-center justify-center bg-black">
         {/* Camera View */}
-        <div className="relative w-full h-3/5 bg-gray-800 flex items-center justify-center">
-          <div className="text-white text-center">
-            <CameraIcon className="w-16 h-16 mx-auto mb-2" />
-            <p>{isFrontCamera ? 'Front Camera' : 'Back Camera'}</p>
+        <div className="relative w-full h-3/5 bg-gray-900 flex items-center justify-center border border-cyan-500/30">
+          <div className="text-center">
+            <CameraIcon className="w-16 h-16 mx-auto mb-2 text-cyan-400" />
+            <p className="text-cyan-300">{isFrontCamera ? 'Front Camera' : 'Back Camera'}</p>
           </div>
         </div>
         
@@ -45,22 +45,22 @@ export default function CameraApp({ goBack }) {
         <div className="w-full p-6 flex justify-center">
           <button 
             onClick={takePhoto}
-            className="w-16 h-16 rounded-full bg-white border-4 border-gray-300 flex items-center justify-center"
+            className="w-16 h-16 rounded-full bg-white border-4 border-cyan-400 flex items-center justify-center shadow-[0_0_15px_#00ffff]"
           >
-            <div className="w-12 h-12 rounded-full bg-white"></div>
+            <div className="w-12 h-12 rounded-full bg-cyan-400"></div>
           </button>
         </div>
         
         {/* Photo Preview */}
-        <div className="w-full p-4 border-t">
-          <h3 className="font-bold mb-2">Recent Photos</h3>
+        <div className="w-full p-4 border-t border-cyan-500/30">
+          <h3 className="font-bold mb-2 text-cyan-300">Recent Photos</h3>
           <div className="flex space-x-2 overflow-x-auto">
             {photos.slice(0, 5).map(photo => (
               <img 
                 key={photo.id} 
                 src={photo.url} 
                 alt="Captured" 
-                className="w-16 h-16 object-cover rounded-lg"
+                className="w-16 h-16 object-cover rounded-lg border border-cyan-500/30"
               />
             ))}
           </div>
@@ -69,3 +69,5 @@ export default function CameraApp({ goBack }) {
     </div>
   );
 }
+
+export default CameraApp;
